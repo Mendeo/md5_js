@@ -1,25 +1,8 @@
 'use strict';
 const data = Buffer.from('md5');
-//const fs = require('fs');
-//const data = fs.readFileSync('dataFile');
 const result = md5(data);
 
-console.log(bufferToString(result, 4)); //Вывод буфера в hex виде.
-
-function bufferToString(buf, power2) //Система счисления 2**power2
-{
-	const arr = new Uint8Array(buf);
-	const size = 2 ** power2;
-	const maxSize = 8 / power2;
-	let resultStr = '';
-	for (let i = 0; i < arr.length; i++)
-	{
-		let aux = arr[i].toString(size);
-		while (aux.length < maxSize) aux = '0' + aux;
-		resultStr += aux + ' ';
-	}
-	return resultStr;
-}
+console.log(Buffer.from(result).toString('hex')); //Вывод буфера в hex виде.
 
 function md5(buffer)
 {
